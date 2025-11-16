@@ -117,6 +117,11 @@ else()
     set(ASSIMP_LIBRARY "/ucrt64/lib/libassimp.dll.a")
     include_directories(${ASSIMP_INCLUDE_DIR})
     link_libraries(${ASSIMP_LIBRARY})
+	add_library(assimp STATIC IMPORTED)  # or SHARED if using dll
+	set_target_properties(assimp PROPERTIES
+	    IMPORTED_LOCATION "/ucrt64/lib/libassimp.dll.a"
+	    INTERFACE_INCLUDE_DIRECTORIES "/ucrt64/include"
+	)
 
     if(TARGET assimp)
         message(STATUS "Using system-installed assimp")

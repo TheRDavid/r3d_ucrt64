@@ -113,15 +113,13 @@ Please initialize the submodule with:
     git submodule update --init --recursive")
     endif()
 else()
-	set(ASSIMP_INCLUDE_DIR "/ucrt64/include")
-    set(ASSIMP_LIBRARY "/ucrt64/lib/libassimp.dll.a")
-    include_directories(${ASSIMP_INCLUDE_DIR})
-    link_libraries(${ASSIMP_LIBRARY})
-	add_library(assimp STATIC IMPORTED)  # or SHARED if using dll
+	add_library(assimp STATIC IMPORTED)
+
 	set_target_properties(assimp PROPERTIES
-	    IMPORTED_LOCATION "/ucrt64/lib/libassimp.dll.a"
-	    INTERFACE_INCLUDE_DIRECTORIES "/ucrt64/include/assimp"
+	    IMPORTED_LOCATION "C:/msys64/ucrt64/lib/libassimp.dll.a"
+	    INTERFACE_INCLUDE_DIRECTORIES "C:/msys64/ucrt64/include"
 	)
+
 
     if(TARGET assimp)
         message(STATUS "Using system-installed assimp")

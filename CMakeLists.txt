@@ -113,7 +113,10 @@ Please initialize the submodule with:
     git submodule update --init --recursive")
     endif()
 else()
-    find_package(assimp QUIET)
+	set(ASSIMP_INCLUDE_DIR "/ucrt64/include")
+    set(ASSIMP_LIBRARY "/ucrt64/lib/libassimp.dll.a")
+    include_directories(${ASSIMP_INCLUDE_DIR})
+    link_libraries(${ASSIMP_LIBRARY})
 
     if(TARGET assimp)
         message(STATUS "Using system-installed assimp")
